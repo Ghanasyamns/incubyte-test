@@ -5,6 +5,7 @@ function add(numbers) {
 
   if (numbers.startsWith("//")) {
     const parts = numbers.split("\n", 2);
+    if (parts.length < 2) return 0;
     const delimiterSection = parts[0].substring(2);
     numberString = parts[1];
 
@@ -26,7 +27,7 @@ function add(numbers) {
     }
 
     // If no delimiters found in [ ], assume single delimiter
-    if (delimiters.length === 0) {
+    if (delimiters.length === 0 && delimiterSection) {
       delimiters.push(delimiterSection);
     }
 
@@ -59,4 +60,4 @@ function add(numbers) {
 
 module.exports = { add };
 
-console.log(add("1,-2,-3"));
+console.log(add("//[*][%]\n1*2%8"));

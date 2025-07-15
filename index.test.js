@@ -40,4 +40,14 @@ describe("String Calculator", () => {
       expect(error.message).toBe("negative numbers not allowed: -2,-3");
     }
   });
+  test("should support multiple custom delimiters with longer length", () => {
+    expect(add("//[***][%%%]\n1***2%%%3")).toBe(6);
+  });
+
+  test("should support multiple custom delimiters with varying long lengths", () => {
+    expect(add("//[abc][defgh]\n1abc2defgh3")).toBe(6);
+  });
+  test("should handle custom delimiters and without numbers", () => {
+    expect(add("//[***]")).toBe(0);
+  });
 });
