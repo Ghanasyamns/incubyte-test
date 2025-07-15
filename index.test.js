@@ -47,7 +47,7 @@ describe("String Calculator", () => {
   test("should support multiple custom delimiters with varying long lengths", () => {
     expect(add("//[abc][defgh]\n1abc2defgh3")).toBe(6);
   });
-  test("should handle custom delimiters and without numbers", () => {
+  test("should handle custom delimiters without numbers", () => {
     expect(add("//[***]")).toBe(0);
   });
 });
