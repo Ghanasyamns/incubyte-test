@@ -1,3 +1,7 @@
-test("adds 1 + 2 to equal 3", () => {
-  expect(1 + 2).toBe(3);
+const { add } = require("./index");
+
+describe("String Calculator", () => {
+  test("should return 0 for an empty string", () => {
+    expect(add("")).toBe(0);
+  });
 });
