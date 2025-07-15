@@ -1,6 +1,5 @@
 function add(numbers) {
   if (numbers === "") return 0;
-  debugger;
   let delimiter = ",";
   let numberString = numbers;
 
@@ -49,9 +48,15 @@ function add(numbers) {
     .map((num) => parseInt(num))
     .filter((num) => !isNaN(num));
 
+  // handle for negative numbers also
+  const negatives = numberArray.filter((num) => num < 0);
+  if (negatives.length > 0) {
+    const errorMessage = "negative numbers not allowed: " + negatives.join(",");
+    return new Error(errorMessage);
+  }
   return numberArray.reduce((sum, num) => sum + num, 0);
 }
 
 module.exports = { add };
 
-console.log(add("//[*][%]\n1*2%3"));
+console.log(add("1,-2,-3"));

@@ -25,4 +25,19 @@ describe("String Calculator", () => {
   test("should support multiple delimiter", () => {
     expect(add("//[*][%]\n1*2%3")).toBe(6);
   });
+
+  test("should throw an exception for a single negative number", () => {
+    try {
+      add("1,-2");
+    } catch (error) {
+      expect(error.message).toBe("negative numbers not allowed: -2");
+    }
+  });
+  test("should throw an exception for multiple negative numbers", () => {
+    try {
+      add("1,-2,-3");
+    } catch (error) {
+      expect(error.message).toBe("negative numbers not allowed: -2,-3");
+    }
+  });
 });
